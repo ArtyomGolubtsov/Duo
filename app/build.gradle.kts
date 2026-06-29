@@ -1,9 +1,14 @@
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.google.gms.google.services)
+
 }
+
 
 android {
     namespace = "com.example.duo"
@@ -34,6 +39,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
@@ -43,6 +49,8 @@ android {
 }
 
 dependencies {
+    // Библиотека для календаря
+    implementation("com.maxkeppeler.sheets-compose-dialogs:calendar:1.3.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.serialization)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -54,6 +62,12 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
+    implementation("com.google.firebase:firebase-auth:23.0.0")
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
+    implementation("com.google.firebase:firebase-database:22.0.1")
+    implementation("com.google.firebase:firebase-bom:34.0.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -61,6 +75,8 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+    implementation("androidx.activity:activity-compose:1.8.0")
 
 
 }
